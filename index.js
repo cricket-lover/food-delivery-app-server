@@ -20,6 +20,10 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(cors());
 
+app.get("/", (req, res) => {
+  res.send("Hey this is my API running 🥳");
+});
+
 app.get("/api/ping", authenticateToken, (req, res) => {
   res.json({ msg: "Pong" });
 });
