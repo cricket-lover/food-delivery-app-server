@@ -20,12 +20,10 @@ const signupHandler = async (req, res) => {
   try {
     const hashedPassword = await bcrypt.hash(password, 10);
     users.push({ username, password: hashedPassword });
-    const isFileExists = fs.existsSync(
-      path.resolve(__dirname, "../data/users.json")
-    );
+    const isFileExists = fs.existsSync(path.resolve("data", "users.json"));
     if (isFileExists) {
       fs.writeFileSync(
-        path.resolve(__dirname, "../data/users.json"),
+        path.resolve("data", "users.json"),
         JSON.stringify(users, null, 2),
         "utf8"
       );
