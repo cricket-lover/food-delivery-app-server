@@ -30,6 +30,10 @@ app.get("/api/ping", authenticateToken, (req, res) => {
   res.json({ msg: "Pong" });
 });
 
+app.get("/api/live", (req, res) => {
+  res.send(true);
+});
+
 app.get("/api/restaurants", getAllRestaurants);
 
 app.post("/api/signup", signupHandler);
