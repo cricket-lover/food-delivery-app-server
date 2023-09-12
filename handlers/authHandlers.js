@@ -20,11 +20,11 @@ const signupHandler = async (req, res) => {
   try {
     const hashedPassword = await bcrypt.hash(password, 10);
     users.push({ username, password: hashedPassword });
-    // fs.writeFileSync(
-    //   path.resolve(__dirname, "../data/users.json"),
-    //   JSON.stringify(users, null, 2),
-    //   "utf8"
-    // );
+    fs.writeFileSync(
+      path.resolve(__dirname, "../data/users.json"),
+      JSON.stringify(users, null, 2),
+      "utf8"
+    );
     return res.status(201).json({ username, email });
   } catch (error) {
     return res.status(500).json(error);
